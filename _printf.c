@@ -12,8 +12,7 @@ int _printf(const char *format, ...)
 	int printed_chars = 0;
 	va_list list;
 
-	if (format == NULL)
-		return (-1);
+	if (format == NULL)		return (-1);
 
 	va_start(list, format);
 
