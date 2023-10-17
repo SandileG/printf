@@ -5,27 +5,25 @@
  * @list: list containing the integer to print.
  * Return: Number of characters printed.
  */
-
 int print_hex(va_list list)
 {
 	unsigned int num = va_arg(list, unsigned int);
-	unsigned int temp;
+	unsigned int brief;
 	char hex[100];
 	int h = 0;
 	int len = 0;
 
 	while (num != 0)
 	{
-		temp = 0;
-		temp = num % 16;
-		if (temp < 10)
+		brief = num % 16;
+		if (brief < 10)
 		{
-			hex[h] = temp + 48;
+			hex[h] = brief + 48;
 			h++;
 		}
 		else
 		{
-			hex[h] = temp + 55;
+			hex[h] = brief + 55;
 			h++;
 		}
 		num = num / 16;

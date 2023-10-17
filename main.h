@@ -3,6 +3,7 @@
 
 /* Standard Libraries */
 #include <stdarg.h>
+#include <stdlib.h>
 #include <unistd.h>
 
 /* Function Declarations */
