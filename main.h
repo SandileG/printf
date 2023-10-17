@@ -13,7 +13,7 @@ int print_percent(void);
 int print_invalid(char c);
 int print_integer(va_list list);
 int print_decimal(va_list list);
-int print_unsigned(va_list list);
+int print_unsigned_number(va_list list);
 int print_octal(va_list list);
 int print_hex(va_list list);
 
