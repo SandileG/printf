@@ -1,5 +1,11 @@
 #include "main.h"
+#include <stdlib.h>
 
+/**
+ * print_integer - Print an integer.
+ * @list: A va_list containing the integer to print.
+ * Return: Number of characters printed.
+ */
 int print_integer(va_list list)
 {
 	int num = va_arg(list, int);
