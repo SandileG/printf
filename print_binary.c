@@ -29,6 +29,7 @@ int print_binary(va_list list)
 	for (s -= 1; s >= 0; s--)
 	{
 		char digit = binary_digits[s] + '0';
+
 		write(1, &digit, 1);
 		printed_chars++;
 	}

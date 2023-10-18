@@ -8,6 +8,7 @@
  * @format: format string
  * Return: the number of characters printed (excluding the null byte)
  */
+
 int _printf(const char *format, ...)
 {
 	int printed_chars = 0;
@@ -17,30 +18,29 @@ int _printf(const char *format, ...)
 		return (-1);
 
 	va_start(list, format);
+	printed_chars = print_format(format, list);
+	va_end(list);
+	return (printed_chars);
+}
+
+
+/**
+ * print_format - Prints the format string
+ * @format: Format string
+ * @list: List of arguments
+ * Return: Number of characters printed
+ */
+
+int print_format(const char *format, va_list list)
+{
+	int printed_chars = 0;
 
 	while (*format != '\0')
 	{
 		if (*format == '%')
 		{
 			format++;
-			if (*format == 'c')
-				printed_chars += print_char(va_arg(list, int));
-			else if (*format == 's')
-				printed_chars += print_string(va_arg(list, char *));
-			else if (*format == '%')
-				printed_chars += print_percent();
-			else if (*format == 'd' || *format == 'i')
-				printed_chars += print_integer(list);
-			else if (*format == 'u')
-				printed_chars += print_unsigned_number(list);
-			else if (*format == 'o')
-				printed_chars += print_octal(list);
-			else if (*format == 'x' || *format == 'X')
-				printed_chars += print_hex(list);
-			else if (*format == 'b')
-				printed_chars += print_binary(list);
-			else
-				printed_chars += print_invalid(*format);
+			printed_chars += process_specifier(format, list);
 		}
 		else
 		{
@@ -49,8 +49,39 @@ int _printf(const char *format, ...)
 		}
 		format++;
 	}
+	return (printed_chars);
+}
 
-	va_end(list);
+/**
+ * process_specifier - Processes the specifier character
+ * @format: Format string
+ * @list: List of arguments
+ * Return: Number of characters printed
+ */
+
+int process_specifier(const char *format, va_list list)
+{
+	int printed_chars = 0;
+	char specifier = *format;
+
+	if (specifier == 'c')
+		printed_chars += print_char(va_arg(list, int));
+	else if (specifier == 's')
+		printed_chars += print_string(va_arg(list, char *));
+	else if (specifier == '%')
+		printed_chars += print_percent();
+	else if (specifier == 'd' || specifier == 'i')
+		printed_chars += print_integer(list);
+	else if (specifier == 'u')
+		printed_chars += print_unsigned_number(list);
+	else if (specifier == 'o')
+		printed_chars += print_octal(list);
+	else if (specifier == 'x' || specifier == 'X')
+		printed_chars += print_hex(list, specifier);
+	else if (specifier == 'b')
+		printed_chars += print_binary(list);
+	else
+		printed_chars += print_invalid(*format);
 	return (printed_chars);
 }
 

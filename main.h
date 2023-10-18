@@ -8,6 +8,8 @@
 
 /* Function Declarations */
 int _printf(const char *format, ...);
+int print_format(const char *format, va_list list);
+int process_specifier(const char *format, va_list list);
 int print_char(char c);
 int print_string(char *str);
 int print_percent(void);
@@ -16,7 +18,7 @@ int print_integer(va_list list);
 int print_decimal(va_list list);
 int print_unsigned_number(va_list list);
 int print_octal(va_list list);
-int print_hex(va_list list);
+int print_hex(va_list list, char specifier);
 int print_binary(va_list list);
 
 #endif /* MAIN_H */
