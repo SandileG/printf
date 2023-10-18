@@ -7,41 +7,46 @@
  * Return: The number of characters printed.
  */
 
+/**
+ * print_udigits - Prints unsigned integers
+ * @num: Unsigned integer to be printed
+ *
+ * Description: This function prints the digits of an unsigned integer
+ * in their decimal representation.
+ */
+
+void print_udigits(unsigned int num)
+{
+
+	char digit;
+
+	if (num == 0)
+		return;
+
+	print_udigits(num / 10);
+	digit = (num % 10) + '0';
+	write(1, &digit, 1);
+}
+
 int print_unsigned_number(va_list list)
 {
 	unsigned int num = va_arg(list, unsigned int);
-	unsigned int temp = num;
+	unsigned int num_copy = num;
 	int digits = 0;
-	char *buffer;
 
 	if (num == 0)
-	{
+    	{
 		write(1, "0", 1);
 		return (1);
 	}
 
-	while (temp != 0)
+	while (num_copy != 0)
 	{
-		temp /= 10;
+		num_copy /= 10;
 		digits++;
 	}
 
-	buffer = malloc(sizeof(char) * (digits + 1));
-	if (buffer == NULL)
-		return (-1);
+	print_udigits(num);
 
-	buffer[digits] = '\0';
-
-	while (digits)
-	{
-		digits--;
-		buffer[digits] = num % 10 + '0';
-		num /= 10;
-	}
-
-	for (digits = 0; buffer[digits]; digits++)
-		write(1, &buffer[digits], 1);
-
-	free(buffer);
 	return (digits);
 }

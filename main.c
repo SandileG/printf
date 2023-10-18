@@ -1,12 +1,13 @@
 #include "main.h"
 
-/**
- * main - Entry point
- *
- * Return: Always 0
- */
 int main(void)
 {
-    _printf("%b\n", 98);
+    unsigned int ui;
+    ui = 2147484671;
+    _printf("Unsigned:[%u]\n", ui);
+    _printf("Unsigned octal:[%o]\n", ui);
+    _printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
+
     return (0);
 }
+
