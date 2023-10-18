@@ -17,5 +17,6 @@ int print_decimal(va_list list);
 int print_unsigned_number(va_list list);
 int print_octal(va_list list);
 int print_hex(va_list list);
+int print_binary(va_list list);
 
 #endif /* MAIN_H */

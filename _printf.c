@@ -37,6 +37,8 @@ int _printf(const char *format, ...)
 				printed_chars += print_octal(list);
 			else if (*format == 'x' || *format == 'X')
 				printed_chars += print_hex(list);
+			else if (*format == 'b')
+				printed_chars += print_binary(list);
 			else
 				printed_chars += print_invalid(*format);
 		}
