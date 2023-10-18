@@ -2,22 +2,14 @@
 #include <stdlib.h>
 
 /**
- * print_unsigned_number - Prints an unsigned integer.
- * @list: A va_list containing the unsigned integer to print.
- * Return: The number of characters printed.
- */
-
-/**
  * print_udigits - Prints unsigned integers
  * @num: Unsigned integer to be printed
  *
- * Description: This function prints the digits of an unsigned integer
+ * This function prints the digits of an unsigned integer
  * in their decimal representation.
  */
-
 void print_udigits(unsigned int num)
 {
-
 	char digit;
 
 	if (num == 0)
@@ -28,6 +20,11 @@ void print_udigits(unsigned int num)
 	write(1, &digit, 1);
 }
 
+/**
+ * print_unsigned_number - Prints an unsigned integer.
+ * @list: A va_list containing the unsigned integer to print.
+ * Return: The number of characters printed.
+ */
 int print_unsigned_number(va_list list)
 {
 	unsigned int num = va_arg(list, unsigned int);
@@ -35,7 +32,7 @@ int print_unsigned_number(va_list list)
 	int digits = 0;
 
 	if (num == 0)
-    	{
+	{
 		write(1, "0", 1);
 		return (1);
 	}
