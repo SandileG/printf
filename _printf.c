@@ -35,20 +35,26 @@ int print_char(char c)
 }
 
 /**
- * print_string - Prints a string
- * @str: String to print
- * Return: Number of characters printed
+ * print_string - Prints a string.
+ * @str: String to print.
+ * Return: Number of characters printed.
  */
 int print_string(char *str)
 {
-	int i = 0;
+	int h = 0;
 
-	while (str[i] != '\0')
+	if (str == NULL)
 	{
-		write(1, &str[i], 1);
-		i++;
+		write(1, "(null)", 6);
+		return (6);
 	}
-	return (i);
+
+	while (str[h] != '\0')
+	{
+		write(1, &str[h], 1);
+		h++;
+	}
+	return (h);
 }
 
 /**
