@@ -6,12 +6,19 @@
  * @list: A va_list containing the integer to print.
  * Return: Number of characters printed.
  */
+
 int print_integer(va_list list)
 {
 	int num = va_arg(list, int);
 	int div = 1;
 	int len = 0;
 	char digit;
+
+	if (num == 0)
+	{
+		len += write(1, "0", 1);
+		return (len);
+	}
 
 	if (num < 0)
 	{
@@ -32,3 +39,5 @@ int print_integer(va_list list)
 
 	return (len);
 }
+
+
